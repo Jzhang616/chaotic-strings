@@ -1,0 +1,23 @@
+def is_chaotic(s):
+    letter_count = {}
+    for element in s:
+        letter_count[element] = 0
+    for element in s:
+        letter_count[element] += 1
+
+    duplicates = {}
+    for key, value in letter_count.items():
+        duplicates.setdefault(value, set()).add(key)
+
+    result = [key for key, values in duplicates.items()
+              if len(values) > 1]
+
+    if len(result) > 0:
+        return("ELMA")
+    else:
+        return("TOHRU")
+
+if __name__ == '__main__':
+    print(is_chaotic("aabbcd"))
+    print(is_chaotic("aaaabbbccd"))
+    print(is_chaotic("abaacccdee"))
